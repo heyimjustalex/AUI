@@ -3,10 +3,10 @@ package pl.edu.aui.laboratorium;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import pl.edu.aui.laboratorium.Coach.Coach;
-import pl.edu.aui.laboratorium.Coach.CoachService;
-import pl.edu.aui.laboratorium.Footballer.Footballer;
-import pl.edu.aui.laboratorium.Footballer.FootballerService;
+import pl.edu.aui.laboratorium.Entity.Coach;
+import pl.edu.aui.laboratorium.Service.CoachService;
+import pl.edu.aui.laboratorium.Entity.Footballer;
+import pl.edu.aui.laboratorium.Service.FootballerService;
 import java.util.*;
 
 
@@ -62,11 +62,11 @@ public class CLI_communicator implements CommandLineRunner {
 
     void deleteCoachById()
     {
-        System.out.println("\nWrite UUID of object");
+        System.out.println("\nWrite ID of object");
         String id = scanner.nextLine();
 
         try {
-            UUID temp = java.util.UUID.fromString(id);
+            int temp = Integer.parseInt(id);
             Optional<Coach> coach = coachService.find(temp);
 
             if (!coach.isEmpty()) {
@@ -79,18 +79,18 @@ public class CLI_communicator implements CommandLineRunner {
         }
         catch (Exception e)
         {
-            System.out.println("Wrong UUID format\n");
+            System.out.println("Wrong ID format\n");
         }
         
     }
 
     void deleteFootballerById()
     {
-        System.out.println("\nWrite UUID of object");
+        System.out.println("\nWrite ID of object");
         String id = scanner.nextLine();
 
         try{
-            UUID temp = java.util.UUID.fromString(id);
+            Integer temp = Integer.parseInt(id);
             Optional<Footballer> footballer = footballerService.find(temp);
 
             if(!footballer.isEmpty())
@@ -106,7 +106,7 @@ public class CLI_communicator implements CommandLineRunner {
         }
         catch (Exception e)
         {
-            System.out.println("Wrong UUID format\n");
+            System.out.println("Wrong ID format\n");
         }
     }
 
@@ -118,12 +118,12 @@ public class CLI_communicator implements CommandLineRunner {
         String surname = scanner.nextLine();
         System.out.print("Position: ");
         String position = scanner.nextLine();
-        System.out.print("Coach UUID: ");
+        System.out.print("Coach ID: ");
         String coachId = scanner.nextLine();
 
         try{
-            UUID uuidCoach = UUID.fromString(coachId);
-            Optional<Coach> coach = coachService.find(uuidCoach);
+            int temp = Integer.parseInt(coachId);
+            Optional<Coach> coach = coachService.find(temp);
 
             if (!coach.isEmpty()) {
                 Coach tempCoach = coach.orElse(new Coach());
@@ -136,7 +136,7 @@ public class CLI_communicator implements CommandLineRunner {
         }
         catch (Exception e)
         {
-            System.out.println("Bad UUID format\n");
+            System.out.println("Bad ID format\n");
         }
 
 

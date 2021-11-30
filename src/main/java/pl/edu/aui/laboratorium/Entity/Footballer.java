@@ -1,30 +1,41 @@
-package pl.edu.aui.laboratorium.Footballer;
+package pl.edu.aui.laboratorium.Entity;
 import lombok.*;
-import org.springframework.stereotype.Component;
-import pl.edu.aui.laboratorium.Coach.Coach;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Type;
 
-import java.util.List;
+import javax.persistence.*;
 import java.util.UUID;
 
+@SuperBuilder
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @EqualsAndHashCode
+@Entity
 
-@Component
+@Table(name="footballers")
+
 public class Footballer
 {
-
-    private UUID id;
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
+    @Column (name="name")
     private String name;
+    @Column (name = "surname")
     private String surname;
+    @Column (name = "position")
     private String position;
+
+    @ManyToOne
+    @JoinColumn(name = "coach")
     private Coach coach;
 
+
     public Footballer(String name, String surname, String position, Coach coach) {
-        this.id = UUID.randomUUID();
+
         this.name = name;
         this.surname = surname;
         this.position = position;

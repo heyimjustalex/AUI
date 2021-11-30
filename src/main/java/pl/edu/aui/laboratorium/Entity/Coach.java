@@ -1,28 +1,40 @@
-package pl.edu.aui.laboratorium.Coach;
+package pl.edu.aui.laboratorium.Entity;
 import lombok.*;
-import org.springframework.stereotype.Component;
-import pl.edu.aui.laboratorium.Footballer.Footballer;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
+@SuperBuilder
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Component
+@Entity
+
+@Table(name="coaches")
 
 public class Coach
 {
-    private UUID id;
+
+    @Id
+    @Column(name="id")
+    @Getter
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
+    @Column(name="name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @OneToMany(mappedBy = "coach",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Footballer> footballers;
 
     public Coach(String name, String surname)
     {
-        this.id = UUID.randomUUID();
+
         this.name = name;
         this.surname = surname;
     }
@@ -35,8 +47,5 @@ public class Coach
                 ", surname='" + surname + '\'' +
                 '}';
     }
-
-
-
 
 }
