@@ -20,7 +20,7 @@ public class Footballer
 {
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     private int id;
     @Column (name="name")
     private String name;
@@ -41,6 +41,13 @@ public class Footballer
         this.position = position;
         this.coach = coach;
     }
+    public Footballer(String name, String surname, String position) {
+
+        this.name = name;
+        this.surname = surname;
+        this.position = position;
+    }
+
 
 
     @Override

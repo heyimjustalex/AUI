@@ -31,9 +31,9 @@ public class DatabaseInitializer
 
 
 
-        coachService.save(coach1);
-        coachService.save(coach2);
-        coachService.save(coach3);
+        coachService.save(coach1,true);
+        coachService.save(coach2,true);
+        coachService.save(coach3,true);
 
 
 

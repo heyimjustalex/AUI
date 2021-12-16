@@ -34,9 +34,13 @@ public class CoachService
     }
 
     @Transactional
-    public Coach save(Coach entity)
+    public Coach save(Coach entity, boolean isInitializer)
     {
-        eventCoachRepository.create(entity);
+        if(!isInitializer)
+        {
+            eventCoachRepository.create(entity);
+        }
+
         return repository.save(entity);
     }
 

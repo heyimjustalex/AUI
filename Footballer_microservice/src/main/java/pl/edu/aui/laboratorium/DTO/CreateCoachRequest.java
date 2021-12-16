@@ -21,7 +21,6 @@ public class CreateCoachRequest
         return req -> Coach.builder()
                 .id(req.getId())
                 .name(req.getName())
-                .surname(req.getSurname())
                 .build();
     }
 }

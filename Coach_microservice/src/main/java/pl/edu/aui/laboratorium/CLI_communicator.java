@@ -84,7 +84,7 @@ public class CLI_communicator implements CommandLineRunner {
 
         try{
             Coach coachTemp = new Coach(name,surname);
-            coachService.save(coachTemp);
+            coachService.save(coachTemp,false);
 
         }
         catch (Exception e)

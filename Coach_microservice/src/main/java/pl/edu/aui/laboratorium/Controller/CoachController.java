@@ -52,7 +52,7 @@ public class CoachController
                 .dtoToEntityMapper()
                 .apply(request);
 
-        coach = coachService.save(coach);
+        coach = coachService.save(coach,false);
         return ResponseEntity.created(builder.pathSegment("api","coaches","{id}")
                 .buildAndExpand(coach.getId()).toUri())
                 .build();

@@ -52,11 +52,10 @@ public class FootballerController {
         Footballer footballer = CreateFootballerRequest
                 .dtoToEntityMapper(test-> coachService.find(test).orElseThrow())
                 .apply(request);
-        if(!footballerService.findByName(footballer.getName()).isPresent()){
+
             footballer = footballerService.save(footballer);
             return ResponseEntity.created(builder.pathSegment("api","footballers","{test}").buildAndExpand(footballer.getName()).toUri()).build();
-        }
-        else return ResponseEntity.badRequest().build();
+
     }
 
     @PutMapping("{id}")

@@ -30,15 +30,17 @@ public class CLI_communicator implements CommandLineRunner {
         while (foo) {
             System.out.println("Write number to call API \n1. Print all Coaches\n2. Print all footballers \n3. Delete coach by id\n4. Delete footballer by id\n5. CreateAndSaveFootballer\n6. CreateAndSaveCoach");
             String number = scanner.nextLine();
-            //switch (number) {
-             //   case "1" -> printCoaches();
-              //  case "2" -> printFootballers();
+            switch (number) {
+                case "1" : printCoaches();
+                break;
+                case "2" : printFootballers();
+                break;
               //  case "3" -> deleteCoachById();
               //  case "4" -> deleteFootballerById();
               //  case "5" -> createAndSaveFootbaler();
               //  case "6" -> createAndSaveCoach();
 
-           //}
+           }
         }
 
     }
@@ -147,11 +149,11 @@ public class CLI_communicator implements CommandLineRunner {
     {
         System.out.println("Name ");
         String name = scanner.nextLine();
-        System.out.print("Surname: ");
-        String surname = scanner.nextLine();
+      //  System.out.print("Surname: ");
+       // String surname = scanner.nextLine();
 
         try{
-            Coach coachTemp = new Coach(name,surname);
+            Coach coachTemp = new Coach(name);
             coachService.save(coachTemp);
 
         }

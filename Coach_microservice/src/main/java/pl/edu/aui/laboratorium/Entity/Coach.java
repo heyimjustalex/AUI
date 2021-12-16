@@ -23,7 +23,7 @@ public class Coach
     @Id
     @Column(name="id")
     @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     @Column(name="name")
     private String name;
@@ -34,7 +34,6 @@ public class Coach
 
     public Coach(String name, String surname)
     {
-
         this.name = name;
         this.surname = surname;
     }

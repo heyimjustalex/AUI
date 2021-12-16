@@ -23,20 +23,19 @@ public class Coach
     @Id
     @Column(name="id")
     @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     @Column(name="name")
     private String name;
-    @Column(name = "surname")
-    private String surname;
+
     @OneToMany(mappedBy = "coach",cascade = CascadeType.ALL)
     private List<Footballer> footballers;
 
-    public Coach(String name, String surname)
+    public Coach(String name)
     {
 
         this.name = name;
-        this.surname = surname;
+
     }
 
 
@@ -44,9 +43,7 @@ public class Coach
     public String toString() {
         return "Coach{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
+                ", name='" + name + '\'' + '}';
     }
 
 }
