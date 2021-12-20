@@ -7,9 +7,9 @@
 
 	<description>Trenerzy i piłkarze</description>
 	<groupId>pl.edu.aui</groupId>
-	<artifactId>laboratorium</artifactId>
+	<artifactId>gateway-lab</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>laboratorium</name>
+	<name>gateway-lab</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -26,11 +26,11 @@ public class LaboratoriumApplication {
 				.route("coaches", r -> r.host("localhost:8080")
 						.and()
 						.path("/api/coaches/{id}", "/api/coaches")
-						.uri("http://localhost:8081"))
+						.uri("http://coaches:8081"))
 				.route("footballers", r -> r.host("localhost:8080")
 						.and()
 						.path("/api/footballers", "/api/footballers/**", "/api/coaches/{name}/footballers", "/api/coaches/{name}/footballers/**")
-						.uri("http://localhost:8082"))
+						.uri("http://footballers:8082"))
 				.build();
 	}
 
